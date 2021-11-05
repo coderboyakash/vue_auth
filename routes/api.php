@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('user', [UserController::class, 'getUser']);
+    Route::get('get/my/posts', [PostController::class, 'getMyPosts']);
+    Route::post('get/new/post', [PostController::class, 'createNewPost']);
 });
 
 Route::post('login', [LoginController::class, 'login']);

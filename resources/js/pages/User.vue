@@ -2,6 +2,7 @@
     <h3>id: {{ loggedInUser.id }}</h3>
     <h3>name: {{ loggedInUser.name }}</h3>
     <h3>email: {{ loggedInUser.email }}</h3>
+    <router-link :to='{name:"Home"}'>Home</router-link>
     <router-view @handleLogout="handleLogout"></router-view>
 </template>
 <script>
