@@ -31,6 +31,7 @@ export default {
     },
     methods:{
         handleLogout(){
+            console.log('wow');
             localStorage.setItem('_token', '')
             store.commit('setIsLoggedIn', false)
             store.commit('setLoggedInUser', null)

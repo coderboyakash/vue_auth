@@ -19571,6 +19571,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     handleLogout: function handleLogout() {
+      console.log('wow');
       localStorage.setItem('_token', '');
       _store_index__WEBPACK_IMPORTED_MODULE_1__["default"].commit('setIsLoggedIn', false);
       _store_index__WEBPACK_IMPORTED_MODULE_1__["default"].commit('setLoggedInUser', null);
