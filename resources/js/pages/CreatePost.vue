@@ -8,34 +8,33 @@
     </form>
 </template>
 <script>
-import axios from 'axios'
-import { getNewPost } from './../apis'
+import { mapActions } from 'vuex'
 import store from './../store/index'
 export default{
+    computed:{
+        // ...mapActions([
+        //     'createPost'
+        // ]),
+    },
     data(){
         return{
             title:null,
             content:null,
         }
     },
-    props:{
-        posts: Array
-    },
-    emits:["updatePostsData"],
+    emits:["loadPosts"],
     methods:{
+        ...mapActions([
+            'createPost'
+        ]),
         handleCreatePost(){
             let data = {
                 title:this.title,
                 content:this.content
             }
-            let headers = {
-                Authorization: store.getters.getToken
-            }
-            axios.post(getNewPost,data, {headers})
-            .then((response)=>{
-                this.title = null
-                this.content = null
-                this.$emit('updatePostsData')
+            console.log(data);
+            this.createPost(data).then(()=>{
+                this.$emit('loadPosts')            
             })
         }
     }
